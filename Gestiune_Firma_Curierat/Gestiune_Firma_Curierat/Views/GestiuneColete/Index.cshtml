@@ -1,0 +1,28 @@
+﻿@model List<Colet>
+
+<h2>Lista de Colete</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Destinatar</th>
+            <th>Stare</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var colet in Model)
+        {
+            <tr>
+                <td>@colet.ColetId</td>
+                <td>@colet.Destinatar</td>
+                <td>@colet.Stare</td>
+                <td>
+                    <form method="post" asp-action="ChangeState" asp-route-coletId="@colet.ColetId">
+                        <button type="submit">Change State</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

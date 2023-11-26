@@ -1,0 +1,29 @@
+﻿@model List<User>
+
+<h2>Lista de Utilizatori</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Is Admin</th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Username</td>
+                <td>@user.isAdmin</td>
+                <td>
+                    <form method="post" asp-action="DeleteUser" asp-route-userId="@user.Id">
+                        <button type="submit">Sterge Utilizator</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

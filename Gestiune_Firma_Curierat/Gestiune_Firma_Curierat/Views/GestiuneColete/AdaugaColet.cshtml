@@ -1,0 +1,15 @@
+﻿@model Colet
+
+<h2>Adaugare Colet</h2>
+
+<form asp-action="AdaugaColet" method="post">
+    <div class="form-group">
+        <label asp-for="Destinatar"></label>
+        <input asp-for="Destinatar" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ClientId"></label>
+        <input asp-for="ClientId" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Adauga</button>
+</form>
