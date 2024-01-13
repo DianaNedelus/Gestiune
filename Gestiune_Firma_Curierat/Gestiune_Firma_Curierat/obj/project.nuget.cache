@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "753o4xAqrSRymTROaZ2AeG1druQ3PEgXbjVUSY2Y6NNKCksjykO25cbXQkWQY12XXVplgdRN84pFcDlNV0+3PQ==",
+  "dgSpecHash": "LW8ry+HUOn91PmaC9wQXkSFBG087F3jdpTxF7GYJJ+UqXxKlMlBSdKLVOsW+CDc0QBHel9dnl+8LmHEdpJW2vw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Diana\\Desktop\\Proiect\\Gestiune_Firma_Curierat\\Gestiune_Firma_Curierat\\Gestiune_Firma_Curierat.csproj",
+  "projectFilePath": "C:\\Users\\Diana\\Desktop\\Gestiune\\Gestiune_Firma_Curierat\\Gestiune_Firma_Curierat\\Gestiune_Firma_Curierat.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Diana\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Diana\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

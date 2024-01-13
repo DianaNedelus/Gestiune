@@ -1,8 +1,31 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Courier Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Welcome to Our Courier Services</h1>
+<section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                <h1>Reliable Courier Solutions for Your Needs</h1>
+                <h2>Our dedicated team ensures secure and timely deliveries</h2>
+                <div class="d-flex justify-content-center justify-content-lg-start">
+                    <form method="post" asp-controller="GestiuneColete" asp-action="Colet">
+                        <input name="coletId"  />
+                        <button class="btn-get-started scrollto" type="submit">Vizioneaza Statusul Coletului</button>
+                    </form>
+                    <form method="post" asp-controller="GestiuneColete" asp-action="Istoric">
+                        <input name="destinatar"/>
+                        <button class="btn-get-started scrollto" type="submit">Vizioneaza Istoricul Vostru</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                <img src="img/hero-img.png" class="img-fluid animated" alt="Courier Services Image">
+            </div>
+        </div>
+    </div>
+
+</section><!-- End Courier Hero Section -->

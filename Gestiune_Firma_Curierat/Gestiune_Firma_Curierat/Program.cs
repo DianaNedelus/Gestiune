@@ -1,6 +1,5 @@
-using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using System.Configuration;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,10 +10,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 
 builder.Services.AddDbContext<FirmaContext>(x => x.UseSqlServer(connectionString));
-
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(x => x.LoginPath = "/account/login");
 var app = builder.Build();
-
-
 
 
 // Configure the HTTP request pipeline.
@@ -27,6 +25,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",

@@ -1,7 +1,6 @@
 ﻿using Azure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Drawing;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Gestiune_Firma_Curierat.Controllers
 {
@@ -13,26 +12,37 @@ namespace Gestiune_Firma_Curierat.Controllers
         {
             db = context;
         }
+
         public IActionResult Index()
         {
-            if (Request.Cookies["LoggedIn"] != null && Request.Cookies["LoggedIn"].ToLower() == "true")
+            if (User.Identity.IsAuthenticated)
             {
                 return View(db.Colete.ToList());
             }
-            return View("GuestIndex", db.Colete.ToList());
+            else
+            {
+                return View("GuestIndex", db.Colete.ToList());
+            }
         }
 
         public IActionResult AdaugaColet()
         {
-            if (Request.Cookies["LoggedIn"] != null && Request.Cookies["LoggedIn"].ToLower() == "true")
+            return View();
+        }
+        [HttpPost]
+        public IActionResult DeletePackage(int packageId)
+        {
+            var package = db.Colete.Find(packageId);
+
+            if (package != null)
             {
-                return View();
+                db.Colete.Remove(package);
+                db.SaveChanges();
             }
 
-            return RedirectToAction("Login");
+            return RedirectToAction("Index");
 
         }
-
         [HttpPost]
         public IActionResult AdaugaColet(Colet colet)
         {
@@ -64,86 +74,45 @@ namespace Gestiune_Firma_Curierat.Controllers
 
             return RedirectToAction("Index");
         }
-        public IActionResult Users()
-        {
-            if (Request.Cookies["LoggedIn"] != null && Request.Cookies["LoggedIn"].ToLower() == "true" &&
-                Request.Cookies["isAdmin"] != null && Request.Cookies["isAdmin"].ToLower() == "true")
-            {
-                return View(db.Users.ToList());
-            }
 
-            return RedirectToAction("Login");
+        public IActionResult Colet(string coletId)
+        {
+            var colet = db.Colete.Find(Int32.Parse(coletId));
+
+            if(colet != null)
+                return View(colet);
+            else 
+                return Redirect("/");
 
         }
+        public IActionResult Istoric(string destinatar)
+        {
+            var colete = db.Colete.Where(colet => colet.Destinatar == destinatar).ToList();
 
+            if (colete.Count > 0)
+                return View(colete);
+            else
+                return Redirect("/");
+
+        }
+        public IActionResult Users()
+        {
+
+            return View(db.Users.ToList());
+
+        }
         public IActionResult DeleteUser(int UserId)
         {
-            if (Request.Cookies["LoggedIn"] != null && Request.Cookies["LoggedIn"].ToLower() == "true" &&
-                Request.Cookies["isAdmin"] != null && Request.Cookies["isAdmin"].ToLower() == "true")
-            { 
-                var user = db.Users.Find(UserId);
+            var user = db.Users.Find(UserId);
 
-                if (user != null)
-                {
-                    db.Users.Remove(user);
-                    db.SaveChanges();
-                }
+            if (user != null)
+            {
+                db.Users.Remove(user);
+                db.SaveChanges();
             }
 
             return RedirectToAction("Users");
 
-        }
-
-        public IActionResult Login(User user)
-        {
-           
-            if (user.Username == null) return View();
-
-
-            var connectedUser = db.Users.First(x => x.Username ==  user.Username);
-
-            if (connectedUser != null)
-            {
-                if(connectedUser.Parola == user.Parola)
-                {
-                   Response.Cookies.Append(
-                        "LoggedIn",
-                        "True",
-                        new CookieOptions()
-                        {
-                            Path = "/"
-                        }
-                    );
-
-                    if(connectedUser.isAdmin == true)
-                    {
-                        Response.Cookies.Append(
-                            "isAdmin",
-                            "True",
-                            new CookieOptions()
-                            {
-                                Path = "/"
-                            }
-                        );
-                    }
-
-                    return RedirectToAction("AdaugaColet");
-                }
-            }
-
-            return RedirectToAction("Index");
-        }
-
-        public IActionResult Signup(User user)
-        {
-
-            if (user.Username == null) return View();
-
-
-            db.Users.Add(user);
-            db.SaveChanges();
-
-            return RedirectToAction("Index");
         }
     }
 }

@@ -3889,11 +3889,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Diana\\Desktop\\Proiect\\Gestiune_Firma_Curierat\\Gestiune_Firma_Curierat\\Gestiune_Firma_Curierat.csproj",
+      "projectUniqueName": "C:\\Users\\Diana\\Desktop\\Gestiune\\Gestiune_Firma_Curierat\\Gestiune_Firma_Curierat\\Gestiune_Firma_Curierat.csproj",
       "projectName": "Gestiune_Firma_Curierat",
-      "projectPath": "C:\\Users\\Diana\\Desktop\\Proiect\\Gestiune_Firma_Curierat\\Gestiune_Firma_Curierat\\Gestiune_Firma_Curierat.csproj",
+      "projectPath": "C:\\Users\\Diana\\Desktop\\Gestiune\\Gestiune_Firma_Curierat\\Gestiune_Firma_Curierat\\Gestiune_Firma_Curierat.csproj",
       "packagesPath": "C:\\Users\\Diana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Diana\\Desktop\\Proiect\\Gestiune_Firma_Curierat\\Gestiune_Firma_Curierat\\obj\\",
+      "outputPath": "C:\\Users\\Diana\\Desktop\\Gestiune\\Gestiune_Firma_Curierat\\Gestiune_Firma_Curierat\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Diana\\AppData\\Roaming\\NuGet\\NuGet.Config",

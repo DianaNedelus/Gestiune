@@ -72,9 +72,6 @@ namespace Gestiune_Firma_Curierat.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ColetId"));
 
-                    b.Property<int>("ClientId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Destinatar")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -96,16 +93,17 @@ namespace Gestiune_Firma_Curierat.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Parola")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("Rol")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("isAdmin")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
